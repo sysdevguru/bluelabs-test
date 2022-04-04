@@ -1,0 +1,11 @@
+run:
+  deadline: 3m
+  tests: true
+
+linters:
+  enable:
+    - deadcode
+    - gofmt
+    - goimports
+    - golint
+    - varcheck

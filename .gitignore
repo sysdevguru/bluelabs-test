@@ -1,0 +1,10 @@
+bin/
+
+# comment for easy assessment
+#.env
+
+.idea/
+
+.vscode/
+.DS_Store
+Brewfile.lock.json

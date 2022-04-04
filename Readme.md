@@ -16,6 +16,7 @@ Each `usecase` will have its own db repository, metrics etc and can be developed
 ```sh
 sudo docker-compose up --remove-orphans
 ```
+Listens on port `8080`
 
 ## Lint
 ```sh

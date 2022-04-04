@@ -167,7 +167,7 @@ var _ = Describe("Router", func() {
 			updateWalletResp := runRequest(router, updateWalletReq)
 
 			assert.Equal(GinkgoT(), 400, updateWalletResp.Code)
-			assert.Equal(GinkgoT(), "cannot deposit negative funds\n", updateWalletResp.Body.String())
+			assert.Equal(GinkgoT(), "cannot update balance with nagetive fund\n", updateWalletResp.Body.String())
 		})
 
 		It("as expected", func() {
@@ -250,7 +250,7 @@ var _ = Describe("Router", func() {
 			updateWalletResp := runRequest(router, updateWalletReq)
 
 			assert.Equal(GinkgoT(), 400, updateWalletResp.Code)
-			assert.Equal(GinkgoT(), "cannot withdraw negative funds\n", updateWalletResp.Body.String())
+			assert.Equal(GinkgoT(), "cannot update balance with nagetive fund\n", updateWalletResp.Body.String())
 		})
 
 		It("as expected", func() {

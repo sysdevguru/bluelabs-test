@@ -74,7 +74,7 @@ var _ = Describe("Wallet", func() {
 
 		It("more than balance", func() {
 			_, err := uc.Withdraw(ctx, 1, walletID, 1000.00)
-			assert.Equal(GinkgoT(), "wallet funds not enough", err.Error())
+			assert.Equal(GinkgoT(), "wallet balance not enough", err.Error())
 		})
 
 		It("as expected", func() {

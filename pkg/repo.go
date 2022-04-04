@@ -54,7 +54,7 @@ func (g *GormRepo) Withdraw(ctx context.Context, userID, walletID int64, funds f
 	}
 
 	if wallet.Balance < funds {
-		return nil, errors.New(ErrWalletFunds)
+		return nil, errors.New(ErrWalletBalance)
 	}
 
 	wallet.Balance -= funds

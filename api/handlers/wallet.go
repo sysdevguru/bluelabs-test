@@ -87,18 +87,9 @@ func (handler *HTTPHandler) UpdateWallet(w http.ResponseWriter, r *http.Request)
 
 	// validate input data
 	if transaction.Fund < 0 {
-		if transaction.Action == model.ActionDeposit {
-			return pkg.StatusError{
-				Code:   http.StatusBadRequest,
-				ErrMsg: pkg.ErrWalletDeposit,
-			}
-		}
-
-		if transaction.Action == model.ActionWithdraw {
-			return pkg.StatusError{
-				Code:   http.StatusBadRequest,
-				ErrMsg: pkg.ErrWalletWithdraw,
-			}
+		return pkg.StatusError{
+			Code:   http.StatusBadRequest,
+			ErrMsg: pkg.ErrWalletFund,
 		}
 	}
 
@@ -107,18 +98,16 @@ func (handler *HTTPHandler) UpdateWallet(w http.ResponseWriter, r *http.Request)
 		if wallet, err = handler.WalletUC.Deposit(r.Context(), int64(userID), int64(walletID), transaction.Fund); err != nil {
 			return err
 		}
-
-		return renderJSON(w, wallet)
 	case model.ActionWithdraw:
 		if wallet, err = handler.WalletUC.Withdraw(r.Context(), int64(userID), int64(walletID), transaction.Fund); err != nil {
 			return err
 		}
-
-		return renderJSON(w, wallet)
 	default:
 		return pkg.StatusError{
 			Code:   http.StatusBadRequest,
 			ErrMsg: pkg.ErrInvalidAction,
 		}
 	}
+
+	return renderJSON(w, wallet)
 }

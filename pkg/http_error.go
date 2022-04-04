@@ -2,12 +2,11 @@ package pkg
 
 var (
 	ErrWalletNotFound = "wallet not found"
-	ErrWalletFunds    = "wallet funds not enough"
+	ErrWalletBalance  = "wallet balance not enough"
 	ErrWalletID       = "invalid wallet id"
 	ErrUserID         = "invalid user id"
 	ErrInvalidAction  = "unavailable action"
-	ErrWalletDeposit  = "cannot deposit negative funds"
-	ErrWalletWithdraw = "cannot withdraw negative funds"
+	ErrWalletFund     = "cannot update balance with nagetive fund"
 	ErrDuplicated     = "user already has a wallet"
 )
 

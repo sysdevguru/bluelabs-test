@@ -97,7 +97,7 @@ func (uc *UseCase) Withdraw(
 ) (*model.Wallet, error) {
 	wallet, err := uc.repo.Withdraw(ctx, userID, walletID, funds)
 	if err != nil {
-		if err.Error() == pkg.ErrWalletFunds {
+		if err.Error() == pkg.ErrWalletBalance {
 			return nil, pkg.StatusError{
 				Code:   http.StatusBadRequest,
 				ErrMsg: err.Error(),
